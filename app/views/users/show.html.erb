@@ -1,1 +1,56 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="profile">
+      <h1 class="page-header"><%= @user.first_name %> <%= @user.last_name %></h1>
+      <div class="row">
+        <div class="col-md-4">
+          <% if @user.avatar.exists? %>
+            <%= image_tag(@user.avatar, class: 'img-responsive img-thumbnail') %>
+          <% else %>
+            <%= image_tag('user.png', class: 'img-responsive img-thumbnail') %>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <ul>
+            <% if @user.first_name != nil && @user.last_name != nil %>
+              <li><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name %></li>
+            <% else %>
+              <li><strong>Name:</strong></li>
+            <% end %>
 
+            <% if @user.location != nil %>
+              <li><strong>Location:</strong> <%= @user.location %></li>
+            <% else %>
+              <li><strong>Location:</strong></li>
+            <% end %>
+
+            <% if @user.sex != nil %>
+              <li><strong>Gender:</strong> <%= @user.sex %></li>
+            <% else %>
+              <li><strong>Gender:</strong></li>
+            <% end %>
+
+            <% if @user.dob != nil %>
+              <li><strong>Age:</strong> <%= age(@user.dob) %></li>
+            <% else %>
+              <li><strong>Age:</strong></li>
+            <% end %>
+
+            <% if @user.art_style != nil %>
+              <li><strong>Art Style:</strong> <%= @user.art_style %></li>
+            <% else %>
+              <li><strong>Art Style:</strong></li>
+            <% end %>
+
+            <% if @user.about != nil %>
+              <li class="about"><strong>About:</strong><span id="user-info"><%= @user.about %></span></li>
+            <% else %>
+              <li><strong>About:</strong></li>
+            <% end %>
+          </ul>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+</div>
