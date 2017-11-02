@@ -3,7 +3,6 @@
 <% end %>
 
 <div class="row top-space">
-  <div class="col-md-1"></div>
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-body">
@@ -39,11 +38,6 @@
           </div>
 
           <div class="form-group">
-            <%= f.label 'Upload a profile pic' %>
-            <%= f.file_field :avatar %>
-          </div>
-
-          <div class="form-group">
             <%= f.label 'Date of birth' %>
             <%= f.date_select :dob, order: [:month, :day, :year], start_year: 1900 %>
           </div>
@@ -53,8 +47,14 @@
             <%= f.select :sex, %w{Male Female Other}, prompt: 'Select' %>
           </div>
 
+          <div class="form-group">
+            <label class="btn btn-primary btn-file">
+              Upload a profile pic<%= f.file_field :avatar, style: 'display:none;' %>
+            </label>
+          </div>
+
           <div id="update-info">
-            <%= link_to 'Change password', '#', id: 'show-fields' %>
+            <%= link_to 'Change password', '#', id: 'show-fields', class: "btn btn-primary" %>
           </div>
 
           <div id="hidden-fields" class= "hidden">
@@ -68,7 +68,7 @@
           </div> <br>
 
           <div class="actions">
-            <%= f.submit "Update", class: 'btn btn-primary' %>
+            <%= f.submit "Update", class: 'btn btn-success' %>
           </div>
 
         <% end %> <hr>
@@ -85,7 +85,8 @@
       </div>
     </div>
   </div>
-
+  <div class="col-md-1"></div>
+  
   <div class="col-md-6 img-top">
     <% if @user.avatar.exists? %>
       <%= image_tag(@user.avatar, class: 'img-responsive large-img') %>
