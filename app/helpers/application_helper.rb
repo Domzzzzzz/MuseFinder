@@ -5,15 +5,13 @@ module ApplicationHelper
     (Date.today - dob).to_i / 365
   end
 
-  # only apostrophe is concatenated if first_name ends with s
-  # otherwise apostrophe + s is concatenated
-  def add_apostrophe(first_name)
-    if first_name[-1] == 's' || first_name[-1] == 'S' || first_name[-1] == 'z' || first_name[-1] == 'Z'
-      first_name += "'"
+  # Helper to display how long ago a post was created
+  def how_long_ago(post)
+    if post.created_at > Time.now.beginning_of_day
+      "Posted " + time_ago_in_words(post.created_at) + " ago"
     else
-      first_name += "'s"
+      "Posted on " + post.created_at.strftime("%b %d, %Y")
     end
   end
-
 
 end

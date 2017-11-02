@@ -1,14 +1,13 @@
 class PostsController < ApplicationController
 
   def index
-
+    @user = current_user
+    @post = Post.new
+    
   end
 
   def new
     @post = Post.new
-    respond_to do |format|
-      format.js
-    end
   end
 
   def create

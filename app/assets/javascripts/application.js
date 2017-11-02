@@ -15,8 +15,12 @@
 //= require bootstrap
 //= require ekko-lightbox
 //= require geocomplete
-//= require turbolinks
 //= require_tree .
+
+// Adds geocomplete functionality to the location field
+$(function(){
+  $('#location-field').geocomplete();
+});
 
 // This function displays email and password fields when the 'Change email & password' link is clicked
 $(function(){
@@ -25,9 +29,4 @@ $(function(){
     $('#hidden-fields').removeClass('hidden');
     $('#update-info').addClass('hidden');
   });
-});
-
-// Adds geocomplete functionality to the location field
-$(function(){
-  $('#location-field').geocomplete();
 });

@@ -1,0 +1,11 @@
+<div class="panel panel-default post">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @user.first_name %> <%= @user.last_name %></h3>
+  </div>
+  <div class="panel-body">
+    <%= image_tag post.image, class: 'img-responsive post-img' %>
+    <div class="comment-text">
+      <%= post.caption %>
+    </div>
+  </div>
+</div>
