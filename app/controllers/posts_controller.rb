@@ -6,8 +6,6 @@ class PostsController < ApplicationController
     @user = current_user
     @post = current_user.posts.build
     @posts = Post.order('created_at DESC')
-
-
   end
 
   def new
@@ -21,8 +19,8 @@ class PostsController < ApplicationController
       flash[:success] = "Your post has been created!"
       redirect_to posts_path
     else
-      flash.now[:alert] = "Your new post couldn't be created! Please check the form."
-      render :new
+      flash.now[:danger] = "Your new post couldn't be created! Please check the form."
+      redirect_to :back
     end
   end
 
@@ -37,7 +35,7 @@ class PostsController < ApplicationController
       flash[:success] = "Post updated."
       redirect_to posts_path
     else
-      flash.now[:alert] = "Update failed. Please check the form."
+      flash.now[:danger] = "Update failed. Please check the form."
       render :edit
     end
   end

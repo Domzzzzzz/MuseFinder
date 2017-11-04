@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @post = Post.new
+    @post = current_user.posts.build
+    @posts = current_user.posts.order('created_at DESC')
   end
 
 end

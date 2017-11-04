@@ -1,35 +1,59 @@
 <div class="panel panel-default post">
   <div class="panel-heading">
-    <div class="row">
-      <div class="col-md-7">
-        <h3 class="panel-title"><%= post.user.first_name %> <%= post.user.last_name %></h3>
-      </div>
-      <div class="col-md-5">
+    <h3 class="panel-title"><%= post.user.first_name %> <%= post.user.last_name %></h3>
+    <!-- <div class="pull-right">
         <%= how_long_ago(post) %>
-      </div>
-    </div>
+    </div> -->
   </div>
   <div class="panel-body">
     <%= image_tag post.image, class: 'img-responsive post-img' %> <br>
+
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-sm-2">
         <% if post.user.avatar.exists? %>
-          <%= image_tag post.user.avatar, class: 'img-responsive tiny-img' %>
+          <%= image_tag post.user.avatar, class: 'img-responsive post-avatar thumbnail' %>
         <% else %>
-          <%= image_tag 'user.png', class: 'img-responsive tiny-img' %>
+          <%= image_tag 'user.png', class: 'img-responsive post-avatar thumbnail' %>
         <% end %>
+        <div class="text-center">
+          <%= how_long_ago(post) %>
+        </div>
+        <div class="likes text-center">7 Likes</div>
       </div>
-      <div class="col-md-9">
-        <div class="comment">
-          <%= post.caption %>
+      <div class="col-sm-10">
+        <div class="bubble">
+          <div class="pointer">
+            <p><%= post.caption %></p>
+          </div>
+          <div class="pointer-border"></div>
+        </div> <br>
+        <div class="comment-form">
+          <form class="form-inline">
+           <div class="form-group">
+             <input type="text" class="form-control" placeholder="Enter Comment">
+           </div>
+           <button type="submit" class="btn btn-default">Add</button>
+         </form>
+        </div>
+        <div class="clearfix"></div> <hr>
+
+        <div class="comments">
+          <div class="comment">
+            <%= link_to '#' do %>
+              <%= image_tag 'user.png', class: 'tiny-img pull-left' %>
+            <% end %>
+            <div class="comment-text">
+              <p>I am just going to paste in a paragraph, then we will add another clearfix.</p>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+
         </div>
       </div>
-      <div class="col-md-1"></div>
-    </div>
-    <hr>
+    </div> <hr>
     <div class="text-center">
       <% if post.user.id == current_user.id %>
-        <%= link_to 'Edit', edit_post_path(post), remote: true, data: {toggle: 'modal', target: '#myModal'} %>
+        <%= link_to 'Edit Post', edit_post_path(post), remote: true, data: {toggle: 'modal', target: '#myModal'} %>
       <% end %>
     </div>
   </div>
