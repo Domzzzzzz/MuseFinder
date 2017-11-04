@@ -32,7 +32,7 @@
            <div class="form-group">
              <input type="text" class="form-control" placeholder="Enter Comment">
            </div>
-           <button type="submit" class="btn btn-default">Add</button>
+           <button type="submit" class="btn btn-success">Add</button>
          </form>
         </div>
         <div class="clearfix"></div> <hr>
@@ -40,7 +40,7 @@
         <div class="comments">
           <div class="comment">
             <%= link_to '#' do %>
-              <%= image_tag 'user.png', class: 'tiny-img pull-left' %>
+              <%= image_tag post.user.avatar, class: 'tiny-img pull-left' %>
             <% end %>
             <div class="comment-text">
               <p>I am just going to paste in a paragraph, then we will add another clearfix.</p>

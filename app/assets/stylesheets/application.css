@@ -69,15 +69,31 @@ footer {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  padding: 4px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: all .2s ease-in-out;
+       -o-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
 }
 
 .tiny-img {
-  max-width:40px;
-  max-height:40px;
+  max-width:50px;
+  max-height:50px;
   object-fit: cover;
   width: 100%;
   height: 100%;
   margin-right: 5px;
+  padding: 4px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: all .2s ease-in-out;
+       -o-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
 }
 
 .post-img {
@@ -87,11 +103,20 @@ footer {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  padding: 4px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: all .2s ease-in-out;
+       -o-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
 }
 
 .img-thumbnail {
   max-height: 225px;
 }
+
 
 .about {
   word-wrap: break-word;
