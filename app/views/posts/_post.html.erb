@@ -8,24 +8,33 @@
     <%= image_tag post.image, class: 'img-responsive post-img' %> <hr>
 
     <div class="row">
-      <div class="col-sm-2">
-        <% if post.user.avatar.exists? %>
-          <%= image_tag post.user.avatar, class: 'img-responsive post-avatar thumbnail' %>
-        <% else %>
-          <%= image_tag 'user.png', class: 'img-responsive post-avatar thumbnail' %>
-        <% end %>
-        <div class="text-center">
+      <div class="col-sm-6">
+        <div class="pull-left">
           <%= how_long_ago(post) %>
         </div>
-        <div class="likes text-center">1000 Likes</div>
       </div>
-      <div class="col-sm-10">
-        <div class="bubble">
-          <div class="pointer">
-            <p><%= post.caption %></p>
+
+      <div class="col-sm-6">
+        <div class="likes pull-right">1000 Likes</div>
+      </div>
+
+      <div class="col-sm-12"> <br>
+        <div class="comments">
+          <div class="comment">
+            <%= link_to '#' do %>
+              <% if post.user.avatar.exists? %>
+                <%= image_tag post.user.avatar, class: 'img-responsive post-avatar tiny-img pull-left' %>
+              <% else %>
+                <%= image_tag 'user.png', class: 'img-responsive post-avatar tiny-img pull-left' %>
+              <% end %>
+            <% end %>
+            <div class="comment-text">
+              <p><%= post.caption %></p>
+            </div>
           </div>
-          <div class="pointer-border"></div>
+          <div class="clearfix"></div>
         </div> <br>
+
         <div class="comment-form">
           <form class="form-inline">
            <div class="form-group">
@@ -34,7 +43,7 @@
            <button type="submit" class="btn btn-success">Add</button>
          </form>
         </div>
-        <div class="clearfix"></div> <hr>
+        <div class="clearfix"></div><hr>
 
         <div class="comments">
           <div class="comment">
@@ -46,9 +55,9 @@
             </div>
           </div>
           <div class="clearfix"></div>
-
         </div>
       </div>
+
     </div> <hr>
     <div class="text-center">
       <% if post.user.id == current_user.id %>
