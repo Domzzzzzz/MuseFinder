@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-8">
     <div class="profile">
-      <h1 class="page-header"><%= @user.first_name %> <%= @user.last_name %></h1>
+      <h1 class="page-header"><%= @user.name %></h1>
       <div class="row">
         <div class="col-md-4">
           <% if @user.avatar.exists? %>
@@ -12,8 +12,8 @@
         </div>
         <div class="col-md-8">
           <ul>
-            <% if @user.first_name != nil && @user.last_name != nil %>
-              <li><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name %></li>
+            <% if @user.name != nil %>
+              <li><strong>Name:</strong> <%= @user.name %></li>
             <% else %>
               <li><strong>Name:</strong></li>
             <% end %>

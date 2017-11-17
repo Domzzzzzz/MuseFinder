@@ -20,7 +20,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   # defining what user params can be updated
   def account_update_params
-    params.require(:user).permit(:password, :password_confirmation, :first_name, :last_name, :dob, :sex, :location, :about, :art_style, :avatar)
+    params.require(:user).permit(:password, :password_confirmation, :name, :dob, :sex, :location, :about, :art_style, :avatar)
   end
 
   # allow user to update their info without password

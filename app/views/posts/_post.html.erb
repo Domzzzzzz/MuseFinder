@@ -1,12 +1,11 @@
 <div class="panel panel-default post">
+  
   <div class="panel-heading">
-    <h3 class="panel-title"><%= post.user.first_name %> <%= post.user.last_name %></h3>
-    <!-- <div class="pull-right">
-        <%= how_long_ago(post) %>
-    </div> -->
+    <h3 class="panel-title"><%= post.user.name %></h3>
   </div>
+
   <div class="panel-body">
-    <%= image_tag post.image, class: 'img-responsive post-img' %> <br>
+    <%= image_tag post.image, class: 'img-responsive post-img' %> <hr>
 
     <div class="row">
       <div class="col-sm-2">
@@ -18,7 +17,7 @@
         <div class="text-center">
           <%= how_long_ago(post) %>
         </div>
-        <div class="likes text-center">7 Likes</div>
+        <div class="likes text-center">1000 Likes</div>
       </div>
       <div class="col-sm-10">
         <div class="bubble">
@@ -40,7 +39,7 @@
         <div class="comments">
           <div class="comment">
             <%= link_to '#' do %>
-              <%= image_tag post.user.avatar, class: 'tiny-img pull-left' %>
+              <%= image_tag 'user.png', class: 'tiny-img pull-left' %>
             <% end %>
             <div class="comment-text">
               <p>I am just going to paste in a paragraph, then we will add another clearfix.</p>
