@@ -22,11 +22,22 @@ $(function(){
   $('#location-field').geocomplete();
 });
 
-// This function displays email and password fields when the 'Change email & password' link is clicked
+// This function displays password fields when the 'Change password' btn clicked
 $(function(){
   $('#show-fields').click(function(e){
     e.preventDefault();
     $('#hidden-fields').removeClass('hidden');
-    $('#update-info').addClass('hidden');
+    $('#update-pw').addClass('hidden');
+    $('#cancel-update-pw').removeClass('hidden');
+  });
+});
+
+// This function hides password fields when the 'Cancel change' btn clicked
+$(function(){
+  $('#hide-fields').click(function(e){
+    e.preventDefault();
+    $('#hidden-fields').addClass('hidden');
+    $('#update-pw').removeClass('hidden');
+    $('#cancel-update-pw').addClass('hidden');
   });
 });

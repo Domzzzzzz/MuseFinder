@@ -42,14 +42,23 @@
             <%= f.select :sex, %w{Male Female Other}, prompt: 'Select' %>
           </div>
 
-          <div class="form-group">
-            <label class="btn btn-primary btn-file">
-              Upload a profile pic<%= f.file_field :avatar, style: 'display:none;' %>
-            </label>
-          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="btn btn-primary btn-file">
+                  Upload a profile pic<%= f.file_field :avatar, style: 'display:none;' %>
+                </label>
+              </div>
+            </div>
 
-          <div id="update-info">
-            <%= link_to 'Change password', '#', id: 'show-fields', class: "btn btn-primary" %>
+            <div class="col-sm-6">
+              <div id="update-pw">
+                <%= link_to 'Change password', '#', id: 'show-fields', class: "btn btn-primary" %>
+              </div>
+              <div class="hidden" id="cancel-update-pw">
+                <%= link_to 'Cancel change', '#', id: 'hide-fields', class: "btn btn-primary" %>
+              </div>
+            </div>
           </div>
 
           <div id="hidden-fields" class= "hidden">

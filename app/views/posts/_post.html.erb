@@ -23,9 +23,9 @@
           <div class="comment">
             <%= link_to '#' do %>
               <% if post.user.avatar.exists? %>
-                <%= image_tag post.user.avatar, class: 'img-responsive post-avatar tiny-img pull-left' %>
+                <%= image_tag post.user.avatar, title: "#{post.user.name}", class: 'img-responsive post-avatar tiny-img pull-left' %>
               <% else %>
-                <%= image_tag 'user.png', class: 'img-responsive post-avatar tiny-img pull-left' %>
+                <%= image_tag 'user.png', title: "#{post.user.name}", class: 'img-responsive post-avatar tiny-img pull-left' %>
               <% end %>
             <% end %>
             <div class="comment-text">
