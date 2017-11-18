@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :user, :controller => 'users'
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   devise_scope :user do
     authenticated :user do

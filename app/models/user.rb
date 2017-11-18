@@ -9,5 +9,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, styles: { small: "100x100", med: "300x300", large: "500x500" }
   validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
+   has_many :comments, dependent: :destroy
+
 
 end
