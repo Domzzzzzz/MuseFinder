@@ -1,10 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :show, :destroy]
   before_action :owned_post, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
-    @user = current_user
     @post = current_user.posts.build
     @posts = Post.order('created_at DESC')
   end

@@ -5,7 +5,9 @@
   </div>
 
   <div class="panel-body">
-    <%= image_tag post.image, class: 'img-responsive post-img' %> <hr>
+    <%= link_to post_path(post), remote: true, data: {toggle: 'modal', target: '#myModal'} do %>
+      <%= image_tag post.image, class: 'img-responsive post-img' %> <hr>
+    <% end %>
 
     <div class="row">
       <div class="col-sm-6">

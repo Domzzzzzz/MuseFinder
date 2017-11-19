@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
 
-  resources :user, :controller => 'users'
+  get 'users/show'
+  get ':name', to: 'users#show', as: :profile
+  get ':name/avatar', to: 'users#avatar', as: :user_avatar
 
   resources :posts do
     resources :comments

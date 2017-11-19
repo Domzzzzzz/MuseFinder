@@ -32,7 +32,7 @@ $(function(){
   });
 });
 
-// This function hides password fields when the 'Cancel change' btn clicked
+// This function hides password fields when the 'Hide fields' btn clicked
 $(function(){
   $('#hide-fields').click(function(e){
     e.preventDefault();

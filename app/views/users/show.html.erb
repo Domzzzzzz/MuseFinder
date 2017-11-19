@@ -6,9 +6,13 @@
       <div class="row">
         <div class="col-md-4">
           <% if @user.avatar.exists? %>
-            <%= image_tag(@user.avatar, class: 'img-responsive img-thumbnail') %>
+            <%= link_to user_avatar_path(@user.name), remote: true, data: {toggle: 'modal', target: '#myModal'} do %>
+              <%= image_tag(@user.avatar, class: 'img-responsive img-thumbnail') %>
+            <% end %>
           <% else %>
-            <%= image_tag('user.png', class: 'img-responsive img-thumbnail') %>
+            <%= link_to user_avatar_path(@user.name), remote: true, data: {toggle: 'modal', target: '#myModal'} do %>
+              <%= image_tag('user.png', class: 'img-responsive img-thumbnail') %>
+            <% end %>
           <% end %>
         </div>
         <div class="col-md-8">

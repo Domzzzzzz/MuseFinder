@@ -123,6 +123,10 @@ footer {
   max-width: 400px;
 }
 
+#hidden-fields {
+  margin-top: 5px;
+}
+
 #user-info {
   margin-left: 5px;
 }
