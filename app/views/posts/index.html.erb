@@ -3,6 +3,7 @@
   <div class="col-md-6">
     <%= render 'form' %>
 
+    <% if @posts != nil %>
     <div class="row">
       <div class="col-md-12">
         <% @posts.each do |post| %>

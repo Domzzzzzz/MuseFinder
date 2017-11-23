@@ -60,12 +60,14 @@
       <div class="col-md-12">
         <%= render 'posts/form' %>
 
-        <div class="row">
-          <div class="col-md-12">
-            <% @posts.each do |post| %>
-              <%= render 'posts/post', post: post %>
-            <% end %>
-          </div>
+        <% if @posts !=nil %>
+          <div class="row">
+            <div class="col-md-12">
+              <% @posts.each do |post| %>
+                <%= render 'posts/post', post: post %>
+              <% end %>
+            </div>
+        <% end %>
 
         </div>
       </div>

@@ -47,7 +47,7 @@
         <div class="comments">
           <div class="comment">
             <%= link_to '#' do %>
-              <%= image_tag 'user.png', class: 'tiny-img pull-left' %>
+              <%= image_tag 'user.png', class: 'tiny-img pull-left img-responsive' %>
             <% end %>
             <div class="comment-text">
               <p>I am just going to paste in a paragraph, then we will add another clearfix.</p>
@@ -56,12 +56,19 @@
           <div class="clearfix"></div>
         </div>
       </div>
-
     </div> <hr>
-    <div class="text-center">
+
+    <div class="pull-right">
       <% if post.user.id == current_user.id %>
-        <%= link_to 'Edit Post', edit_post_path(post), remote: true, data: {toggle: 'modal', target: '#myModal'} %>
+        <%= link_to edit_post_path(post),title:'Edit Post', remote: true, data: {toggle: 'modal', target: '#myModal'} do %>
+          <p class="three-dot">&#8942;</p>
+        <% end %>
+      <% else %>
+        <%= link_to '#', title:'Flag Inappropriate', remote: true, data: {toggle: 'modal', target: '#myModal'} do %>
+          <div class="three-dot"></div>
+        <% end %>
       <% end %>
     </div>
+
   </div>
 </div>
