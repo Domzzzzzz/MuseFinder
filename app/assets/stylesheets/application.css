@@ -134,4 +134,9 @@ footer {
 .three-dot {
   max-width: 30px;
   max-height: 30px;
-  }
+}
+
+.option-btn {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+}
