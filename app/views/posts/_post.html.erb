@@ -61,11 +61,11 @@
     <div class="pull-right">
       <% if post.user.id == current_user.id %>
         <%= link_to edit_post_path(post),title:'Edit Post', remote: true, data: {toggle: 'modal', target: '#myModal'} do %>
-          <p class="three-dot">&#8942;</p>
+          <%= image_tag 'threedot.png', class: 'img-responsive three-dot' %>
         <% end %>
       <% else %>
         <%= link_to '#', title:'Flag Inappropriate', remote: true, data: {toggle: 'modal', target: '#myModal'} do %>
-          <div class="three-dot"></div>
+          <%= image_tag 'threedot.png', class: 'img-responsive three-dot' %>
         <% end %>
       <% end %>
     </div>

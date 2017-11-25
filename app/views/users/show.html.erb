@@ -58,18 +58,16 @@
     </div> <br>
     <div class="row">
       <div class="col-md-12">
-        <%= render 'posts/form' %>
+        <%= render 'posts/new' %>
 
-        <% if @posts !=nil %>
-          <div class="row">
-            <div class="col-md-12">
-              <% @posts.each do |post| %>
-                <%= render 'posts/post', post: post %>
-              <% end %>
-            </div>
-        <% end %>
-
+        <div class="row">
+          <div class="col-md-12">
+            <% @posts.each do |post| %>
+              <%= render 'posts/post', post: post %>
+            <% end %>
+          </div>
         </div>
+
       </div>
     </div>
   </div>

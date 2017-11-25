@@ -4,8 +4,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @post = current_user.posts.build
     @posts = Post.order('created_at DESC')
+    @post = current_user.posts.build
   end
 
   def new
@@ -25,9 +25,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    respond_to do |format|
-      format.js
-    end
+  end
+
+  def show
   end
 
   def update

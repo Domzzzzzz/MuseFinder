@@ -8,8 +8,8 @@
 
   <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
   <script src="jquery.geocomplete.js"></script>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -23,7 +23,7 @@
 
 <%= render 'layouts/navbar' %>
 
-<!-- links to open modal need - remote: true, data: {toggle: 'modal', target: '#myModal'} -->
+<!-- include: remote: true, data: {toggle: 'modal', target: '#myModal'} -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">

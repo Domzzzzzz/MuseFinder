@@ -132,10 +132,6 @@ footer {
 }
 
 .three-dot {
-  font-size: 25px;
-  color: #787d87;
+  max-width: 30px;
+  max-height: 30px;
   }
-
-.three-dot:hover {
-  text-decoration: none;
-}

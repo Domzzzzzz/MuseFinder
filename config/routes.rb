@@ -2,13 +2,13 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
 
-  get 'users/show'
-  get ':name', to: 'users#show', as: :profile
-  get ':name/avatar', to: 'users#avatar', as: :user_avatar
-
   resources :posts do
     resources :comments
   end
+
+  get 'users/show'
+  get ':name', to: 'users#show', as: :profile
+  get ':name/avatar', to: 'users#avatar', as: :user_avatar
 
   devise_scope :user do
     authenticated :user do

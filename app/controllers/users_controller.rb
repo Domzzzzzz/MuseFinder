@@ -3,12 +3,12 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @post = @user.posts.build
-    @posts = @user.posts.order('created_at DESC')
+    @user = User.find_by(name: params[:name])
+    @post = current_user.posts.build
+    @posts = User.find_by(name: params[:name]).posts.order('created_at DESC')
   end
 
   def avatar
-
   end
 
   private
