@@ -154,5 +154,15 @@ footer {
 }
 
 .comment-menu {
-  margin-top: 5px;
+  margin-top: 8px;
+}
+
+.comment-text {
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+.post-caption {
+  word-wrap: break-word;
+  max-width: 375px;
 }

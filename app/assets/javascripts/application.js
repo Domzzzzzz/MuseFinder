@@ -41,3 +41,22 @@ $(function(){
     $('#cancel-update-pw').addClass('hidden');
   });
 });
+
+// The 2 following functions toggle truncated/nontruncated post caption
+$(function(){
+  $('.more').click(function(e){
+    e.preventDefault();
+    var postId = $(this).data('post-id');
+    $('#trunc-' + postId).addClass('hidden');
+    $('#nontrunc-' + postId).removeClass('hidden');
+  });
+});
+
+$(function(){
+  $('.less').click(function(e){
+    e.preventDefault();
+    var postId = $(this).data('post-id');
+    $('#trunc-' + postId).removeClass('hidden');
+    $('#nontrunc-' + postId).addClass('hidden');
+  });
+});
