@@ -1,5 +1,5 @@
 <% if @user.avatar.exists? %>
-  <%= image_tag(@user.avatar, class: 'img-responsive') %>
+  <%= image_tag(@user.avatar, class: 'img-responsive img-modal') %>
 <% else %>
-  <%= image_tag('user.png', class: 'img-responsive') %>
+  <%= image_tag('user.png', class: 'img-responsive img-modal') %>
 <% end %>

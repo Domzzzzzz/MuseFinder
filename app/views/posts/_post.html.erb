@@ -1,7 +1,7 @@
 <div class="panel panel-default post">
 
   <div class="panel-heading">
-    <h3 class="panel-title"><%= post.user.name %></h3>
+    <h3 class="panel-title"><%= link_to post.user.name, profile_path(post.user.name), class: 'profile-link' %></h3>
   </div>
 
   <div class="panel-body">
@@ -23,7 +23,7 @@
       <div class="col-sm-12"> <br>
         <div class="comments">
           <div class="comment">
-            <%= link_to '#' do %>
+            <%= link_to profile_path(post.user.name) do %>
               <% if post.user.avatar.exists? %>
                 <%= image_tag post.user.avatar, title: "#{post.user.name}", class: 'img-responsive post-avatar tiny-img pull-left' %>
               <% else %>
