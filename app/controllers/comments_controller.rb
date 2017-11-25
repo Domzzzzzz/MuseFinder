@@ -6,10 +6,10 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      flash[:success] = "Comment successfully created"
+      flash[:success] = "Comment successfully created!"
       redirect_to :back
     else
-      flash[:danger] = "Check the comment form, something seems to have gone wrong"
+      flash[:danger] = "Something went wrong and your comment wasn't created."
       render authenticated_root_path
     end
   end
