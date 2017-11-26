@@ -20,7 +20,8 @@ header .logo{
 
 .bubble{
 	position: relative;
-	width: 580px;
+	width: 100%;
+	max-width: 450px;
 	min-height: 65px;
 	padding: 15px;
 	background: #fff;

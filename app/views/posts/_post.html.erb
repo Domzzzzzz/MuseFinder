@@ -21,82 +21,77 @@
 
     <!-- post caption -->
         <div class="col-sm-12"> <br>
-          <div class="comments">
-            <div class="comment">
-              <div class="row">
-                <div class="col-sm-2">
+          <div class="row">
+            <div class="col-sm-2">
 
-                  <div class="dropdown">
-                    <button class="dropdown-toggle option-btn" type="button" data-toggle="dropdown">
-                      <% if post.user.avatar.exists? %>
-                        <%= image_tag post.user.avatar, title: "#{post.user.name}", class: 'tiny-img pull-left img-responsive' %>
-                      <% else %>
-                        <%= image_tag 'user.png', title: "#{post.user.name}", class: 'tiny-img pull-left img-responsive' %>
-                      <% end %>
-                    </button>
-                    <ul class="dropdown-menu drop-menu">
-                      <% if post.user.id == current_user.id %>
-                        <li class="dropdown-header"><%= post.user.name %></li>
-                        <li class="divider"></li>
-                        <li><%= link_to 'View Profile', profile_path(post.user.name) %></li>
-                      <% else %>
-                        <li class="dropdown-header"><%= post.user.name %></li>
-                        <li class="divider"></li>
-                        <li><%= link_to 'View Profile', profile_path(post.user.name) %></li>
-                        <li><%= link_to 'Follow User', '#' %></li>
-                        <li><%= link_to 'Block User', '#' %></li>
-                      <% end %>
-                    </ul>
-                  </div>
+              <div class="dropdown">
+                <button class="dropdown-toggle option-btn" type="button" data-toggle="dropdown">
+                  <% if post.user.avatar.exists? %>
+                    <%= image_tag post.user.avatar, title: "#{post.user.name}", class: 'tiny-img pull-left img-responsive' %>
+                  <% else %>
+                    <%= image_tag 'user.png', title: "#{post.user.name}", class: 'tiny-img pull-left img-responsive' %>
+                  <% end %>
+                </button>
+                <ul class="dropdown-menu drop-menu">
+                  <% if post.user.id == current_user.id %>
+                    <li class="dropdown-header"><%= post.user.name %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to 'View Profile', profile_path(post.user.name) %></li>
+                  <% else %>
+                    <li class="dropdown-header"><%= post.user.name %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to 'View Profile', profile_path(post.user.name) %></li>
+                    <li><%= link_to 'Follow User', '#' %></li>
+                    <li><%= link_to 'Block User', '#' %></li>
+                  <% end %>
+                </ul>
+              </div>
 
-                </div>
+            </div>
 
-                <div class="col-sm-10">
-                  <div class="comment-text">
-                    <% if post.caption.length > 55 %>
-                      <div id="trunc-<%= post.id %>">
-                        <%= truncate(post.caption, length: 55) %>
-                        <%= link_to 'Read more', '#', remote: true, class: 'more', data: {post_id: "#{post.id}", type: "html"} %>
-                      </div>
+            <div class="col-sm-10">
+              <div class="bubble">
+                <div class="pointer">
+                  <% if post.caption.length > 55 %>
+                    <div id="trunc-<%= post.id %>">
+                      <%= truncate(post.caption, length: 55) %>
+                      <%= link_to 'Read more', '#', remote: true, class: 'more', data: {post_id: "#{post.id}", type: "html"} %>
+                    </div>
 
-                      <div id="nontrunc-<%= post.id %>" class="hidden post-caption">
-                        <%= post.caption %>
-                        <%= link_to 'Read less', '#', remote: true, class: 'less', data: {post_id: "#{post.id}", type: "html"} %>
-                      </div>
-                    <% else %>
+                    <div id="nontrunc-<%= post.id %>" class="hidden post-caption">
                       <%= post.caption %>
-                    <% end %>
-
-                  </div>
+                      <%= link_to 'Read less', '#', remote: true, class: 'less', data: {post_id: "#{post.id}", type: "html"} %>
+                    </div>
+                  <% else %>
+                    <%= post.caption %>
+                  <% end %>
+                  <div class="pointer-border"></div>
                 </div>
               </div>
             </div>
-            <div class="clearfix"></div>
-          </div> <br>
+          </div>
+          <div class="clearfix"></div> <br>
     <!-- end post caption -->
 
-
-          <%= form_for [post, post.comments.new] do |f| %>
-            <div class="form-group">
-              <%= f.text_field :content, placeholder: 'Comment on this post...', class: 'form-control' %>
-            </div>
-            <div class="clearfix"></div><hr>
-          <% end %>
+      <%= form_for [post, post.comments.new] do |f| %>
+        <div class="form-group">
+          <%= f.text_field :content, placeholder: 'Comment on this post...', class: 'form-control' %>
+        </div>
+        <div class="clearfix"></div><hr>
+      <% end %>
 
    <!-- user comments -->
-        <div class="comments">
-        <!-- render comment partial here -->
-        <% if post.comments.any %>
+      <div class="comments">
+        <% if post.comments.any? %>
           <%= render post.comments.order('created_at ASC'), post: post %>
         <% end %>
-
-        </div>
-
       </div>
-    </div> <hr>
- <!-- end user comments -->
-    <div class="pull-right">
 
+    </div>
+  </div> <hr>
+ <!-- end user comments -->
+ 
+    <div class="pull-right">
       <% if post.user.id == current_user.id %>
         <div class="dropdown">
           <button class="dropdown-toggle option-btn" type="button" data-toggle="dropdown">
@@ -115,7 +110,6 @@
           </ul>
         </div>
       <% end %>
-
     </div>
 
   </div>
