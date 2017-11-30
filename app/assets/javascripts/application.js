@@ -79,3 +79,43 @@ $(function(){
     $('#unhide-' + postId).addClass('hidden');
   });
 });
+
+// The 2 following functions toggle truncated/nontruncated comments
+$(function(){
+  $('.show-more').click(function(e){
+    e.preventDefault();
+    var commentId = $(this).data('comment-id');
+    $('#trunc-comment-' + commentId).addClass('hidden');
+    $('#nontrunc-comment-' + commentId).removeClass('hidden');
+  });
+});
+
+$(function(){
+  $('.show-less').click(function(e){
+    e.preventDefault();
+    var commentId = $(this).data('post-id');
+    $('#trunc-comment-' + commentId).removeClass('hidden');
+    $('#nontrunc-comment-' + commentId).addClass('hidden');
+  });
+});
+
+// The 2 following functions toggle comments
+$(function(){
+  $('.show-comments').click(function(e){
+    e.preventDefault();
+    var postId = $(this).data('post-id');
+    $('#show-' + postId).addClass('hidden');
+    $('#hide-' + postId).removeClass('hidden');
+    $('#comments-' + postId).removeClass('hidden');
+  });
+});
+
+$(function(){
+  $('.hide-comments').click(function(e){
+    e.preventDefault();
+    var postId = $(this).data('post-id');
+    $('#show-' + postId).removeClass('hidden');
+    $('#hide-' + postId).addClass('hidden');
+    $('#comments-' + postId).addClass('hidden');
+  });
+});

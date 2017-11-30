@@ -28,8 +28,20 @@
     </div>
 
     <div class="col-sm-8">
-      <div class="comment-text post-caption">
-        <%= comment.content %>
+      <div class="caption">
+        <% if comment.content.length > 40 %>
+          <div id="trunc-comment-<%= comment.id %>">
+            <%= truncate(comment.content, length: 40) %>
+            <%= link_to 'Read more', '#', remote: true, class: 'show-more', data: {comment_id: "#{comment.id}", type: "html"} %>
+          </div>
+
+          <div id="nontrunc-comment-<%= comment.id %>" class="hidden post-caption">
+            <%= comment.content %>
+            <%= link_to 'Read less', '#', remote: true, class: 'show-less', data: {comment_id: "#{comment.id}", type: "html"} %>
+          </div>
+        <% else %>
+          <%= comment.content %>
+        <% end %>
       </div>
     </div>
 

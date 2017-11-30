@@ -97,8 +97,8 @@ footer {
 
 .post-img {
   margin: 0 auto;
-  max-width:400px;
-  max-height:400px;
+  max-width:500px;
+  max-height:500px;
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -188,4 +188,9 @@ footer {
 .caption {
   margin-top: 15px;
   margin-left: -5px;
+}
+
+.comments {
+  max-height: 400px;
+  overflow: scroll;
 }

@@ -74,9 +74,19 @@
         <% end %>
       </div>
    <!-- user comments -->
-      <div class="comments">
+      <div id="show-<%= post.id %>" class="text-center">
+        <%= link_to 'Show comments', '#', remote: true, class: 'show-comments', data: {post_id: "#{post.id}", type: "html"} %>
+      </div>
+
+      <div id="hide-<%= post.id %>" class="text-center hidden">
+        <%= link_to 'Hide comments', '#', remote: true, class: 'hide-comments', data: {post_id: "#{post.id}", type: "html"} %>
+      </div>
+
+      <div id="comments-<%= post.id %>" class="comments hidden">
         <% if post.comments.any? %>
-          <%= render post.comments.order('created_at ASC'), post: post %>
+          <% post.comments.each do |comment| %>
+            <%= render post.comments.order('created_at ASC'), post: post %>
+          <% end %>
         <% end %>
       </div>
 
