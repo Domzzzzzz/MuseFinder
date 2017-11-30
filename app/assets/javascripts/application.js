@@ -60,3 +60,22 @@ $(function(){
     $('#nontrunc-' + postId).addClass('hidden');
   });
 });
+
+// The 2 following functions hide and unhide posts
+$(function(){
+  $('.hide-post').click(function(e){
+    e.preventDefault();
+    var postId = $(this).data('post-id');
+    $('#unhide-' + postId).removeClass('hidden');
+    $('#post-' + postId).addClass('hidden');
+  });
+});
+
+$(function(){
+  $('.unhide-post').click(function(e){
+    e.preventDefault();
+    var postId = $(this).data('post-id');
+    $('#post-' + postId).removeClass('hidden');
+    $('#unhide-' + postId).addClass('hidden');
+  });
+});

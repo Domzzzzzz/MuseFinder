@@ -85,7 +85,6 @@ footer {
   object-fit: cover;
   width: 100%;
   height: 100%;
-  margin-top: 3px;
   padding: 4px;
   line-height: 1.42857143;
   background-color: #fff;
@@ -139,6 +138,25 @@ footer {
 .option-btn {
   background-color: #FFFFFF;
   border-color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.drop-content {
+  display: none;
+  position: absolute;
+}
+
+.drop-menu:hover .drop-content {
+  display: block;
+}
+
+.drop-menu:hover .option-btn {
+  background-color: #004492;
 }
 
 .img-modal {
@@ -167,7 +185,7 @@ footer {
   max-width: 375px;
 }
 
-.dropdown-menu {
-  position: relative;
-  z-index: 999;
+.caption {
+  margin-top: 15px;
+  margin-left: -5px;
 }

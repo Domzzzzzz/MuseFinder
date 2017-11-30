@@ -1,4 +1,4 @@
-<div class="panel panel-default post">
+<div id="post-<%= post.id %>" class="panel panel-default post">
   <div class="panel-heading">
     <h3 class="panel-title"><%= link_to post.user.name, profile_path(post.user.name) %></h3>
   </div>
@@ -17,69 +17,62 @@
 
         <div class="col-sm-6">
           <div class="likes pull-right">1000 Likes</div>
-        </div>
+        </div> <br> <br>
 
     <!-- post caption -->
-        <div class="col-sm-12"> <br>
-          <div class="row">
-            <div class="col-sm-2">
-
-              <div class="dropdown">
-                <button class="dropdown-toggle option-btn" type="button" data-toggle="dropdown">
-                  <% if post.user.avatar.exists? %>
-                    <%= image_tag post.user.avatar, title: "#{post.user.name}", class: 'tiny-img pull-left img-responsive' %>
-                  <% else %>
-                    <%= image_tag 'user.png', title: "#{post.user.name}", class: 'tiny-img pull-left img-responsive' %>
-                  <% end %>
-                </button>
-                <ul class="dropdown-menu drop-menu">
-                  <% if post.user.id == current_user.id %>
-                    <li class="dropdown-header"><%= post.user.name %></li>
-                    <li class="divider"></li>
-                    <li><%= link_to 'View Profile', profile_path(post.user.name) %></li>
-                  <% else %>
-                    <li class="dropdown-header"><%= post.user.name %></li>
-                    <li class="divider"></li>
-                    <li><%= link_to 'View Profile', profile_path(post.user.name) %></li>
-                    <li><%= link_to 'Follow User', '#' %></li>
-                    <li><%= link_to 'Block User', '#' %></li>
-                  <% end %>
-                </ul>
-              </div>
-
-            </div>
-
-            <div class="col-sm-10">
-              <div class="bubble">
-                <div class="pointer">
-                  <% if post.caption.length > 55 %>
-                    <div id="trunc-<%= post.id %>">
-                      <%= truncate(post.caption, length: 55) %>
-                      <%= link_to 'Read more', '#', remote: true, class: 'more', data: {post_id: "#{post.id}", type: "html"} %>
-                    </div>
-
-                    <div id="nontrunc-<%= post.id %>" class="hidden post-caption">
-                      <%= post.caption %>
-                      <%= link_to 'Read less', '#', remote: true, class: 'less', data: {post_id: "#{post.id}", type: "html"} %>
-                    </div>
-                  <% else %>
-                    <%= post.caption %>
-                  <% end %>
-                  <div class="pointer-border"></div>
-                </div>
-              </div>
-            </div>
+        <div class="col-sm-2">
+          <div class="dropdown drop-menu">
+            <button class="dropdown-toggle option-btn" type="button" data-toggle="dropdown">
+              <% if post.user.avatar.exists? %>
+                <%= image_tag post.user.avatar, class: 'tiny-img pull-left img-responsive' %>
+              <% else %>
+                <%= image_tag 'user.png', class: 'tiny-img pull-left img-responsive' %>
+              <% end %>
+            </button>
+            <ul class="dropdown-menu drop-content">
+              <% if post.user.id == current_user.id %>
+                <li class="dropdown-header"><%= post.user.name %></li>
+                <li class="divider"></li>
+                <li><%= link_to 'View Profile', profile_path(post.user.name) %></li>
+              <% else %>
+                <li class="dropdown-header"><%= post.user.name %></li>
+                <li class="divider"></li>
+                <li><%= link_to 'View Profile', profile_path(post.user.name) %></li>
+                <li><%= link_to 'Add Friend', '#' %></li>
+                <li><%= link_to 'Block User', '#' %></li>
+              <% end %>
+            </ul>
           </div>
-          <div class="clearfix"></div> <br>
-    <!-- end post caption -->
-
-      <%= form_for [post, post.comments.new] do |f| %>
-        <div class="form-group">
-          <%= f.text_field :content, placeholder: 'Comment on this post...', class: 'form-control' %>
         </div>
-        <div class="clearfix"></div><hr>
-      <% end %>
 
+        <div class="col-sm-10">
+          <div class="caption">
+            <% if post.caption.length > 50 %>
+              <div id="trunc-<%= post.id %>">
+                <%= truncate(post.caption, length: 50) %>
+                <%= link_to 'Read more', '#', remote: true, class: 'more', data: {post_id: "#{post.id}", type: "html"} %>
+              </div>
+
+              <div id="nontrunc-<%= post.id %>" class="hidden post-caption">
+                <%= post.caption %>
+                <%= link_to 'Read less', '#', remote: true, class: 'less', data: {post_id: "#{post.id}", type: "html"} %>
+              </div>
+            <% else %>
+              <%= post.caption %>
+            <% end %>
+          </div>
+        </div>
+        <div class="clearfix"></div><br>
+
+    <!-- end post caption -->
+      <div class="col-sm-12">
+        <%= form_for [post, post.comments.new] do |f| %>
+          <div class="form-group">
+            <%= f.text_field :content, placeholder: 'Comment on this post...', class: 'form-control' %>
+          </div>
+          <div class="clearfix"></div><hr>
+        <% end %>
+      </div>
    <!-- user comments -->
       <div class="comments">
         <% if post.comments.any? %>
@@ -87,25 +80,25 @@
         <% end %>
       </div>
 
-    </div>
   </div> <hr>
  <!-- end user comments -->
- 
+
     <div class="pull-right">
       <% if post.user.id == current_user.id %>
         <div class="dropdown">
           <button class="dropdown-toggle option-btn" type="button" data-toggle="dropdown">
             <%= image_tag 'threedot.png', class: 'img-responsive three-dot' %>
           </button>
-          <ul class="dropdown-menu">
-            <li><%= link_to 'Edit Post', edit_post_path(post), remote: true, data: {toggle: 'modal', target: '#myModal'} %></li>
-            <li><%= link_to 'Delete Post', post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } %></li>
+          <ul class="dropdown-menu user-menu">
+            <li><%= link_to 'Edit post', edit_post_path(post), remote: true, data: {toggle: 'modal', target: '#myModal'} %></li>
+            <li><%= link_to 'Delete post', post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } %></li>
           </ul>
         </div>
       <% else %>
         <div class="dropdown">
           <button class="dropdown-toggle option-btn" type="button" data-toggle="dropdown"><%= image_tag 'threedot.png', class: 'img-responsive three-dot' %></button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu user-menu">
+            <li><%= link_to 'Hide this post', '#', class: 'hide-post', remote: true, data: {post_id: "#{post.id}", type: "html"} %></li>
             <li><%= link_to 'Report inappropriate content', '#' %></li>
           </ul>
         </div>
@@ -113,4 +106,8 @@
     </div>
 
   </div>
+</div>
+
+<div style="margin-bottom:20px;" id="unhide-<%= post.id %>" class="hidden">
+  This post is hidden click to <%= link_to 'unhide it', '#', class: 'unhide-post', remote: true, data: {post_id: "#{post.id}", type: "html"} %>
 </div>
