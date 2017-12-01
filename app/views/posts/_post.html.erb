@@ -19,7 +19,7 @@
           <div class="likes pull-right">1000 Likes</div>
         </div> <br> <br>
 
-    <!-- post caption -->
+    <!-- post caption !!!!!!!!!!!!!!!!!!!!!!!!!!!-->
         <div class="col-sm-2">
           <div class="dropdown drop-menu">
             <button class="dropdown-toggle option-btn" type="button" data-toggle="dropdown">
@@ -63,17 +63,18 @@
           </div>
         </div>
         <div class="clearfix"></div><br>
-
-    <!-- end post caption -->
+    <!-- end post caption !!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <!-- comment form !!!!!!!!!!!!!!!!!!!!!!!!!!!-->
       <div class="col-sm-12">
-        <%= form_for [post, post.comments.new] do |f| %>
+        <%= form_for [post, post.comments.build], remote: true do |f| %>
           <div class="form-group">
-            <%= f.text_field :content, placeholder: 'Comment on this post...', class: 'form-control' %>
+            <%= f.text_field :content, placeholder: 'Comment on this post...', class: 'form-control', id: 'comment-content-#{post.id}' %>
           </div>
           <div class="clearfix"></div><hr>
         <% end %>
       </div>
-   <!-- user comments -->
+   <!-- end comment form !!!!!!!!!!!!!!!!!!!!!!!!!-->
+   <!-- user comments !!!!!!!!!!!!!!!!!!!!!!!!!!!-->
       <div id="show-<%= post.id %>" class="text-center">
         <%= link_to 'Show comments', '#', remote: true, class: 'show-comments', data: {post_id: "#{post.id}", type: "html"} %>
       </div>
@@ -90,8 +91,8 @@
         <% end %>
       </div>
 
-  </div> <hr>
- <!-- end user comments -->
+  </div> <hr> <!-- end row -->
+ <!-- end user comments !!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 
     <div class="pull-right">
       <% if post.user.id == current_user.id %>
@@ -115,9 +116,9 @@
       <% end %>
     </div>
 
-  </div>
-</div>
+  </div> <!-- end panel-body -->
+</div> <!-- end panel -->
 
 <div style="margin-bottom:20px;" id="unhide-<%= post.id %>" class="hidden">
-  This post is hidden click to <%= link_to 'unhide it', '#', class: 'unhide-post', remote: true, data: {post_id: "#{post.id}", type: "html"} %>
+  This post has been hidden. <%= link_to 'Click here', '#', class: 'unhide-post', remote: true, data: {post_id: "#{post.id}", type: "html"} %> to unhide it.
 </div>

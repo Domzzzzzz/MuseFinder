@@ -1,0 +1,4 @@
+// AJAX response for comments controller create method
+// appends comments onto the post and resets text field
+$('#comment-content-<%= @post.id %>, input[type="text"]').val('');
+$('#comments-<%= @post.id %>').append("<%= j render 'comments/comment', post: @post, comment: @comment %>");

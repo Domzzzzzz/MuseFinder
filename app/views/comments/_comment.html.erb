@@ -1,13 +1,13 @@
-<div class="comment">
+<div class="comments">
   <div class="row">
     <div class="col-sm-2">
 
       <div class="dropdown drop-menu">
         <button class="dropdown-toggle option-btn" type="button" data-toggle="dropdown">
           <% if comment.user.avatar.exists? %>
-            <%= image_tag comment.user.avatar, title: "#{comment.user.name}", class: 'tiny-img pull-left img-responsive' %>
+            <%= image_tag comment.user.avatar, class: 'tiny-img pull-left img-responsive' %>
           <% else %>
-            <%= image_tag 'user.png', title: "#{comment.user.name}", class: 'tiny-img pull-left img-responsive' %>
+            <%= image_tag 'user.png', class: 'tiny-img pull-left img-responsive' %>
           <% end %>
         </button>
         <ul class="dropdown-menu drop-content">
@@ -29,9 +29,9 @@
 
     <div class="col-sm-8">
       <div class="caption">
-        <% if comment.content.length > 40 %>
+        <% if comment.content.length > 50 %>
           <div id="trunc-comment-<%= comment.id %>">
-            <%= truncate(comment.content, length: 40) %>
+            <%= truncate(comment.content, length: 50) %>
             <%= link_to 'Read more', '#', remote: true, class: 'show-more', data: {comment_id: "#{comment.id}", type: "html"} %>
           </div>
 
@@ -48,7 +48,7 @@
     <div class="col-sm-2">
 
       <% if comment.user.id == current_user.id %>
-        <div class="dropdown">
+        <div class="dropdown comment-options">
           <button class="dropdown-toggle option-btn" type="button" data-toggle="dropdown">
             <%= image_tag 'threedot.png', class: 'img-responsive three-dot' %>
           </button>
